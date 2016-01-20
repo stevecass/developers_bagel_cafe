@@ -1,4 +1,12 @@
+get '/' do 
+  redirect '/restaurants'
+end
+
 #index
+get '/restaurants' do 
+  @restaurants = Restaurant.all
+  erb :'restaurants/index'
+end
 
 #new -- get route, for the form that is used to create model
 get '/restaurants/new' do
@@ -6,7 +14,7 @@ get '/restaurants/new' do
 end
 
 #show
-get 'restaurants/:id' do
+get '/restaurants/:id' do
   @restaurant = Restaurant.find_by(id: params[:id])
   erb :'restaurants/show' 
 end
@@ -22,6 +30,22 @@ post '/restaurants' do
 end
 
 #edit
+get '/restaurants/:id/edit' do
+  @restaurant = Restaurant.find_by(id: params[:id])
+  erb :'restaurants/edit' 
+end
+
 #update
+put '/restaurants/:id' do
+  restaurant = Restaurant.find_by(id: params[:id])
+  restaurant.update_attributes(params[:restaurant])
+  redirect "/restaurants"
+end
+
 
 #delete
+delete '/restaurants/:id' do
+  restaurant = Restaurant.find_by(id: params[:id])
+  restaurant.destroy
+  redirect "/restaurants"
+end

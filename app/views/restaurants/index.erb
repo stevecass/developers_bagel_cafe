@@ -1,0 +1,7 @@
+<h1> Restaurant Index Page </h1> 
+<a href='/restaurants/new'>Add</a>
+<div>
+  <% @restaurants.each do |restaurant| %>
+    <%= erb :'restaurants/_restaurant', layout: false, locals:{restaurant: restaurant} %>
+  <% end %> 
+</div>
