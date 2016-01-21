@@ -1,4 +1,3 @@
-
 #index
 get '/restaurants' do 
   @restaurants = Restaurant.all
