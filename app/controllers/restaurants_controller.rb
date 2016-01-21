@@ -24,6 +24,7 @@ post '/restaurants' do
   restaurant = Restaurant.new(params[:restaurant])
   if restaurant.save
     redirect "/restaurants/#{restaurant.id}"
+    "/restaurants/4"
   else
     return [500, "You Blew it"]
   end 
