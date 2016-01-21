@@ -1,4 +1,7 @@
 <h1> Restaurant Index Page </h1> 
+<% if logged_in? %>
+  <h2> Your Name is <%= current_user.full_name %> </h2>
+<% end %>
 <a href='/restaurants/new'>Add</a>
 <div>
   <% @restaurants.each do |restaurant| %>

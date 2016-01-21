@@ -1,6 +1,3 @@
-get '/' do 
-  redirect '/restaurants'
-end
 
 #index
 get '/restaurants' do 

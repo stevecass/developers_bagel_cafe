@@ -65,3 +65,10 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+
+#error{
+    color: black;
+    background-color: red;
+    font-size: 10em;
+    font-weight: bolder;
+}
