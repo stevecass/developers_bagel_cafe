@@ -3,8 +3,8 @@
   <h2> Your Name is <%= current_user.full_name %> </h2>
 <% end %>
 <a href='/restaurants/new'>Add</a>
-<div>
+<div id='restaurant-list'>
   <% @restaurants.each do |restaurant| %>
-    <%= erb :'restaurants/_restaurant', layout: false, locals:{restaurant: restaurant} %>
+    <a href='/restaurants/<%= restaurant.id %>'> Load <%= restaurant.name %></a>
   <% end %> 
 </div>

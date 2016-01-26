@@ -12,7 +12,11 @@ end
 #show
 get '/restaurants/:id' do
   @restaurant = Restaurant.find_by(id: params[:id])
-  erb :'restaurants/show' 
+  if request.xhr?
+    return erb :'restaurants/show', layout: false
+  else
+    return erb :'restaurants/show'
+  end
 end
 
 #create -- the post route assoicated with an new restaurant form
