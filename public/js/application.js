@@ -43,6 +43,10 @@ var myObject = {};
 myObject['fixSticks'] = "Yummy";
 myObject.chickenFingers = "Blergh";
 
+var apple = 1;
+
+var newObject = {};
+
 console.log(myObject.fixSticks);
 console.log(myObject.chickenFingers);
 
