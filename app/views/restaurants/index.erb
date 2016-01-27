@@ -2,9 +2,16 @@
 <% if logged_in? %>
   <h2> Your Name is <%= current_user.full_name %> </h2>
 <% end %>
-<a href='/restaurants/new'>Add</a>
+<div id='new-restaurant'>
+  <a id='add-restaurant' href='/restaurants/new'>Add</a>
+</div>
+<hr />
 <div id='restaurant-list'>
-  <% @restaurants.each do |restaurant| %>
-    <a href='/restaurants/<%= restaurant.id %>'> Load <%= restaurant.name %></a>
-  <% end %> 
+  <ul>
+    <% @restaurants.each do |restaurant| %>
+      <li id='restaurant-<%= restaurant.id %>'>
+        <a data-id='<%=restaurant.id %>' href='/restaurants/<%= restaurant.id %>'><%= restaurant.name %></a>
+      </li>
+    <% end %> 
+  </ul>
 </div>

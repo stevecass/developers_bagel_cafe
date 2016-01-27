@@ -6,14 +6,18 @@ end
 
 #new -- get route, for the form that is used to create model
 get '/restaurants/new' do
-  erb :'restaurants/new'
+  if request.xhr?
+    erb :'restaurants/_form', layout: false
+  else
+    erb :'restaurants/new'
+  end
 end
 
 #show
 get '/restaurants/:id' do
   @restaurant = Restaurant.find_by(id: params[:id])
   if request.xhr?
-    return erb :'restaurants/show', layout: false
+    return erb :'restaurants/_restaurant', layout: false, locals: {restaurant: @restaurant }
   else
     return erb :'restaurants/show'
   end
@@ -21,10 +25,13 @@ end
 
 #create -- the post route assoicated with an new restaurant form
 post '/restaurants' do
-  restaurant = Restaurant.new(params[:restaurant])
-  if restaurant.save
-    redirect "/restaurants/#{restaurant.id}"
-    "/restaurants/4"
+  new_rest = Restaurant.new(params[:restaurant])
+  if new_rest.save
+    if request.xhr?
+      erb :'restaurants/_restaurant', layout: false, locals: {restaurant: new_rest}
+    else
+      redirect "/restaurants/#{new_rest.id}"
+    end
   else
     return [500, "You Blew it"]
   end 
