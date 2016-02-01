@@ -12,4 +12,5 @@ class Restaurant < ActiveRecord::Base
   def menu_alphabetical
     menu_items.sort_by{ |item| item.name }
   end
+
 end

@@ -12,7 +12,7 @@
       <label> <%= restaurant.address %> </label>
     </div>
     <div>
-      <a href='/restaurants/<%= restaurant.id %>/edit'> edit </a>
+      <a class='edit' data-id='<%= restaurant.id %>' href='/restaurants/<%= restaurant.id %>/edit'> edit </a>
     </div>
     <div>
       <form action='/restaurants/<%= restaurant.id %>' method='post'> 

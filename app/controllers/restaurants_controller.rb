@@ -17,7 +17,11 @@ end
 get '/restaurants/:id' do
   @restaurant = Restaurant.find_by(id: params[:id])
   if request.xhr?
-    return erb :'restaurants/_restaurant', layout: false, locals: {restaurant: @restaurant }
+    if params[:type] == 'html'
+      return erb :'restaurants/_restaurant', layout: false, locals: {restaurant: @restaurant }
+    else
+      return @restaurant.to_json
+    end
   else
     return erb :'restaurants/show'
   end
@@ -40,14 +44,23 @@ end
 #edit
 get '/restaurants/:id/edit' do
   @restaurant = Restaurant.find_by(id: params[:id])
-  erb :'restaurants/edit' 
+  if request.xhr? 
+    erb :'restaurants/_edit_form', layout: false, locals:{restaurant: @restaurant}
+  else
+    erb :'restaurants/edit' 
+  end
 end
 
 #update
 put '/restaurants/:id' do
   restaurant = Restaurant.find_by(id: params[:id])
   restaurant.update_attributes(params[:restaurant])
-  redirect "/restaurants"
+
+  if request.xhr?
+    erb :'restaurants/_restaurant', layout: false, locals: {restaurant: restaurant}
+  else
+    redirect "/restaurants"
+  end
 end
 
 

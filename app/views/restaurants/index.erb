@@ -10,7 +10,13 @@
   <ul>
     <% @restaurants.each do |restaurant| %>
       <li id='restaurant-<%= restaurant.id %>'>
-        <a data-id='<%=restaurant.id %>' href='/restaurants/<%= restaurant.id %>'><%= restaurant.name %></a>
+        <div> 
+          <div class='name'><%= restaurant.name %></div>
+          <div class='controls'>
+            <a data-type='html' data-id='<%=restaurant.id %>' href='/restaurants/<%= restaurant.id %>'>html</a>
+            <a data-type='json' data-id='<%=restaurant.id %>' href='/restaurants/<%= restaurant.id %>'>json</a>
+          </div>
+        </div>
       </li>
     <% end %> 
   </ul>
