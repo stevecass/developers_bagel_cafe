@@ -1,2 +1,14 @@
 <h1> Restaurant Show Page </h1>
 <%= erb :'restaurants/_restaurant', layout: false, locals:{restaurant: @restaurant} %>
+
+
+<hr />
+<h2> Menu Items </h2>
+<div id='add'>
+  <a id='add-item' href='/restaurants/<%= @restaurant.id %>/menu_items/new' > add menu item </a>
+</div>
+<div id='item-list'>
+<% @menu_items.each do |cur_item| %>
+  <%= erb :'/menu_items/_menu_item', layout: false, locals:{item: cur_item } %>
+<% end %>
+</div>

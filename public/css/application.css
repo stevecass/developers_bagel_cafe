@@ -73,5 +73,26 @@ code {
     font-weight: bolder;
 }
 
-.details{
+
+.menu-item{
+    width: 100%;
+    display: block;
+    float: left;
+}
+
+.menu-item > .item-name {
+    width: 15%;
+    display: block;
+    float: left;
+}
+.menu-item > .item-desc {
+    width: 50%;
+    display: block;
+    float: left;
+}
+
+.menu-item > .item-price {
+    width: 30%;
+    display: block;
+    float: left;
 }

@@ -23,6 +23,7 @@ get '/restaurants/:id' do
       return @restaurant.to_json
     end
   else
+    @menu_items = @restaurant.menu_items
     return erb :'restaurants/show'
   end
 end
