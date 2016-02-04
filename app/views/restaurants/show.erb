@@ -8,7 +8,4 @@
   <a id='add-item' href='/restaurants/<%= @restaurant.id %>/menu_items/new' > add menu item </a>
 </div>
 <div id='item-list'>
-<% @menu_items.each do |cur_item| %>
-  <%= erb :'/menu_items/_menu_item', layout: false, locals:{item: cur_item } %>
-<% end %>
 </div>

@@ -8,3 +8,8 @@ post '/menu_items' do
   item.save!
   item.to_json
 end
+
+get '/menu_items.json' do 
+  @menu_items = MenuItem.all
+  @menu_items.to_json
+end
